@@ -1,4 +1,4 @@
--- sql script that contains a stored procedure `AddBonus`ù
+-- sql script that contains a stored procedure `AddBonus`
 -- that adds a new corr for a student
 DELIMITER $$
 CREATE
