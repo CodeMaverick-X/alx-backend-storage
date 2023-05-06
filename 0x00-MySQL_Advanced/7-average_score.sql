@@ -9,7 +9,7 @@ LANGUAGE SQL
 DETERMINISTIC
 BEGIN
 	DECLARE average INTEGER;
-	SET average = (AVG(`score`) FROM `corrections`
+	SET average = (SELECT AVG(`score`) FROM `corrections`
 		       WHERE corrections.user_id=user_id);
 	UPDATE users
 	SET average_score = average
