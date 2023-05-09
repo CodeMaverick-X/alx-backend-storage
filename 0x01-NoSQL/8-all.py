@@ -4,6 +4,7 @@ contains function that lists all docs in a coll
 """
 import pymongo
 
+
 def list_all(mongo_collection):
     """lists all docs in a coll"""
     coll_lst = []
