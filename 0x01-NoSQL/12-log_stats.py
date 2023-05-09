@@ -4,12 +4,12 @@ script that provides some stats
 about nginx logs stored in mongodb
     Data
 """
-from pymongo import MongoClient as mc
+from pymongo import MongoClient
 
 
 def main():
     """main func: entry point"""
-    with mc() as client:
+    with MongoClient() as client:
         db = client.logs
         coll = db.nginx
 
