@@ -1,2 +1,2 @@
 // deletes doc with name="Holberton school" in col `school`
-db.school.deleteOne({"name": "Holberton school"})
+db.school.deleteMany({"name": "Holberton school"})
