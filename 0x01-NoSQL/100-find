@@ -1,0 +1,2 @@
+// Sript that lists all documents with name that matches regex
+db.school.find({"name": /^Holberton.*$/})
