@@ -1,0 +1,2 @@
+// script that creates if not exists or uses the db
+use my_db
