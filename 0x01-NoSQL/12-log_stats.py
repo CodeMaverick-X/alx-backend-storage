@@ -30,5 +30,5 @@ def main():
         print('{} status check'.format(stat_ck))
 
 
-if __name__ == "__main__":
-    main()
+
+main()
