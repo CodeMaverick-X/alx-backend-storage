@@ -11,6 +11,7 @@ class Cache:
     """class that creates a cache mech"""
     def __init__(self):
         """instatiate"""
+
         self._redis = redis.Redis()
         self._redis.flushdb()
 
