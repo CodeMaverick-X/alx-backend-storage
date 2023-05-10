@@ -11,11 +11,11 @@ class Cache:
     """class that creates a cache mech"""
     def __init__(self):
         """instatiate"""
-        self.___redis = redis.Redis()
-        self.___redis.flushdb()
+        self._redis = redis.Redis()
+        self._redis.flushdb()
 
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """store value in cache"""
         key = str(uuid.uuid4())
-        self.___redis.set(key, data)
+        self._redis.set(key, data)
         return key
