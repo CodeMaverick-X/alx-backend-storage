@@ -24,7 +24,7 @@ def get_page_decorator(fn: Callable[[str], str]) -> Callable:
 
 
 @get_page_decorator
-def get_page(url: str) -> str:
+def get_page(url: str) -> requests.Response:
     """Get page"""
     html = requests.get(url, headers={"User-Agent": "Requests"}).content
     return html
