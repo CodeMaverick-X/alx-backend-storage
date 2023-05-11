@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """
 contains a cache class
 """
@@ -21,21 +21,3 @@ class Cache:
         self._redis.set(key, data)
         return key
 
-    def get(self, key: str, fn:
-            Union[
-                Callable[[bytes],
-                         Union[str, bytes, int, float]], None] = None)\
-            -> Union[str, bytes, int, float, None]:
-        """Returns a stored data"""
-        data = self._redis.get(key)
-        if data is not None and fn is not None:
-            data = fn(data)
-        return data
-
-    def get_str(self, key: str) -> Union[str, bytes, int, float, None]:
-        """Returns a stored data as string"""
-        return self.get(key, str)
-
-    def get_int(self, key: str) -> Union[str, bytes, int, float, None]:
-        """Returns a stored data as int"""
-        return self.get(key, int)
