@@ -8,6 +8,21 @@ from typing import Union, Callable, Any
 from functools import wraps
 
 
+def replay(fn: Callable):
+    """display the history of calls of a
+    particullar func"""
+    r = redis.Redis()
+    key = fn.__qualname__
+    count = r.get(key)
+    lst_in = [item.decode("utf-8") for item in r.lrange(key+":inputs", 0, -1)]
+    lst_out = [item.decode("utf-8") for
+               item in r.lrange(key+":outputs", 0, -1)]
+    print("Cache.store was called {} times:".format(count.decode("utf-8")))
+
+    for val_in, val_out in zip(lst_in, lst_out):
+        print("Cache.store(*{}) -> {}".format(val_in, val_out))
+
+
 def count_calls(method: Callable) -> Callable:
     """decorate stored method to count no of calls"""
     @wraps(method)
