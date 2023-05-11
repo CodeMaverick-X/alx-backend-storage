@@ -4,7 +4,7 @@ contains a cache class
 """
 import redis
 import uuid
-from typing import Union
+from typing import Union, Callable
 
 
 class Cache:
@@ -21,3 +21,20 @@ class Cache:
         self._redis.set(key, data)
         return key
 
+    def get(self, key: str, fn: Callable[[str, bytes, int, float],
+                                         Union[str, bytes, int, float]] = None
+            ) -> Union[str, bytes, int, float]:
+        """get value from the redis db"""
+        val = self._redis.get(key)
+        if fn:
+            return fn(val)
+        return val
+
+    def get_str(key):
+        """get str to automatically parametrize cache.get"""
+
+        return self.get(key, str)
+
+    def get_int(key):
+        """get int to automatically parametrize cache.get"""
+        return self.get(key, int)
